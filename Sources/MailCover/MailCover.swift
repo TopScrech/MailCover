@@ -9,11 +9,28 @@ struct MailSheet: ViewModifier {
     var recipients, ccRecipients, bccRecipients: [String]?
     var alerts: MailAlertsOptions
     
+    init(_ isPresented: Binding<Bool>,
+         message: String? = nil,
+         subject: String? = nil,
+         recipients: [String]? = nil,
+         ccRecipients: [String]? = nil,
+         bccRecipients: [String]? = nil,
+         alerts: MailAlertsOptions
+    ) {
+        _isPresented = isPresented
+        self.message = message
+        self.subject = subject
+        self.recipients = recipients
+        self.ccRecipients = ccRecipients
+        self.bccRecipients = bccRecipients
+        self.alerts = alerts
+    }
+    
     func body(content: Content) -> some View {
         content
             .sheet(isPresented: $isPresented) {
                 MailView(
-                    isPresented: $isPresented,
+                    $isPresented,
                     message: message,
                     subject: subject,
                     recipients: recipients,
@@ -28,7 +45,7 @@ struct MailSheet: ViewModifier {
 @available(iOS 15.0, macOS 12.0, *)
 public extension View {
     func mailCover(
-        isPresented: Binding<Bool>,
+        _ isPresented: Binding<Bool>,
         message: String? = nil,
         subject: String? = nil,
         recipients: [String]? = nil,
@@ -38,7 +55,7 @@ public extension View {
     ) -> some View {
         self.modifier(
             MailSheet(
-                isPresented: isPresented,
+                isPresented,
                 message: message,
                 subject: subject,
                 recipients: recipients,
@@ -62,6 +79,23 @@ struct MailView: View {
     var message, subject: String?
     var recipients, ccRecipients, bccRecipients: [String]?
     var alerts: MailAlertsOptions = .enabled
+    
+    init(_ isPresented: Binding<Bool>,
+         message: String? = nil,
+         subject: String? = nil,
+         recipients: [String]? = nil,
+         ccRecipients: [String]? = nil,
+         bccRecipients: [String]? = nil,
+         alerts: MailAlertsOptions
+    ) {
+        _isPresented = isPresented
+        self.message = message
+        self.subject = subject
+        self.recipients = recipients
+        self.ccRecipients = ccRecipients
+        self.bccRecipients = bccRecipients
+        self.alerts = alerts
+    }
     
     var body: some View {
         if MFMailComposeViewController.canSendMail() {
