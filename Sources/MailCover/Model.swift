@@ -1,3 +1,4 @@
+#if canImport(MessageUI)
 import MessageUI
 
 public enum MailAlertsOptions {
@@ -13,3 +14,4 @@ struct MailResult: Identifiable, Equatable {
         return lhs.id == rhs.id
     }
 }
+#endif

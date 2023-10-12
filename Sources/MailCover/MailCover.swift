@@ -1,4 +1,5 @@
 import SwiftUI
+#if canImport(MessageUI)
 import MessageUI
 
 @available(iOS 15.0, macOS 12.0, *)
@@ -72,9 +73,9 @@ struct MailView: View {
     @Binding var isPresented: Bool
     
     @State private var mailResult: MailResult?
-    @State private var alertPresented: Bool = false
-    @State private var alertTitle: String = ""
-    @State private var alertMessage: String = ""
+    @State private var alertPresented = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
     
     var message, subject: String?
     var recipients, ccRecipients, bccRecipients: [String]?
@@ -152,13 +153,13 @@ struct MailView: View {
                 Text("No email account is set up. Please set up an email account in your device settings.")
                     .multilineTextAlignment(.center)
                     .padding()
-                Button(action: {
+                Button {
                     isPresented = false
-                }) {
+                } label: {
                     Text("OK")
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.blue)
+                        .background(.blue)
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
@@ -224,3 +225,4 @@ struct MailPresenter: UIViewControllerRepresentable {
         }
     }
 }
+#endif
