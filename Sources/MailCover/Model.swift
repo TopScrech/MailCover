@@ -1,5 +1,4 @@
 #if canImport(MessageUI)
-
 import MessageUI
 
 public enum MailAlertsOptions {

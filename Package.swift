@@ -1,4 +1,4 @@
-// swift-tools-version: 5.7.1
+// swift-tools-version: 6.2.1
 import PackageDescription
 
 let package = Package(
@@ -9,12 +9,12 @@ let package = Package(
     products: [
         .library(
             name: "MailCover",
-            targets: ["MailCover"]),
+            targets: ["MailCover"]
+        )
     ],
     targets: [
         .target(
             name: "MailCover",
-            dependencies: [],
             linkerSettings: [
                 .linkedFramework("MessageUI")
             ]
