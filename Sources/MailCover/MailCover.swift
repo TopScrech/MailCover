@@ -1,5 +1,4 @@
 #if canImport(MessageUI)
-
 import SwiftUI
 import MessageUI
 
@@ -240,5 +239,4 @@ struct MailPresenter: UIViewControllerRepresentable {
         }
     }
 }
-
-#endif // canImport(MessageUI)
+#endif
