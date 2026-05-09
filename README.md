@@ -1,6 +1,6 @@
 # MailCover
 
-MailCover is a powerful Swift package designed to simplify the process of integrating email composition within your SwiftUI apps using the MessageUI framework. With an intuitive interface, this package enables developers to effortlessly add email composition functionality to their apps without dealing with the complexities of directly working with the framework.
+MailCover is a powerful Swift package designed to simplify the process of integrating email composition within your SwiftUI apps using the MessageUI framework. With an intuitive interface, this package enables developers to effortlessly add email composition functionality to their apps without dealing with the complexities of directly working with the framework
 
 ## Supported platforms
 - iOS 13+
